@@ -1,0 +1,6 @@
+testback/
+testfront/
+projbackend/node_modules/
+projbackend/package-lock.json
+projfrontend/node_modules/
+projfrontend/package-lock.json
