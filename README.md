@@ -1,1 +1,1 @@
-# mern-project
+# T-shirt Ecommerce App
