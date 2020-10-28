@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import crypto from "crypto";
-import { v4 as uuidv4 } from "uuid";
+const mongoose = require("mongoose");
+const crypto = require("crypto");
+const uuidv4 = require("uuid");
 
 const { Schema } = mongoose;
 
@@ -53,13 +53,13 @@ userSchema
     this._password;
   });
 
-userSchema.method = {
+userSchema.methods = {
   authenticate: function (plainPassword) {
     return this.securePassword(plainPassword) === this.encry_password;
   },
 
   securePassword: function (plainPassword) {
-    if (!password) return "";
+    if (!plainPassword) return "";
 
     try {
       return crypto
@@ -72,6 +72,6 @@ userSchema.method = {
   },
 };
 
-console.log(" ->", password);
+// console.log(" ->", password);
 
 module.exports = mongoose.model("User", userSchema);
