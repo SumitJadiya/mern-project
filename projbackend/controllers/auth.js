@@ -65,10 +65,19 @@ exports.signin = (req, res) => {
     })
 }
 
-
+// validation
 function validation(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array()[0] });
     }
 }
+
+// protected routes
+exports.isSignedIn = expressJwt({
+    secret: 'sumitJadiya',
+    userProperty: "auth"
+})
+
+
+// custom middleware
