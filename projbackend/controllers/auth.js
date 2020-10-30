@@ -13,7 +13,7 @@ exports.signup = (req, res) => {
     // })
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+        return res.status(422).json({ errors: errors.array()[0] });
     }
 
     const user = new User(req.body);

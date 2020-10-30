@@ -8,7 +8,8 @@ router.get("/signout", signout)
 router.post(
     "/signup",
     [
-        body("name").isLength({ min: 3 }).withMessage('must be at least 3 chars long'),
+        body("name").isLength({ min: 3 }).withMessage('Name must be at least 3 chars long'),
+        body("password").isLength({ min: 3 }).withMessage('Password must be at least 3 chars long'),
         body('email').isEmail(),
     ],
     signup)
