@@ -18,7 +18,7 @@ exports.getProductById = (req, res, next, id) => {
 }
 
 exports.getProduct = (req, res) => {
-    req.product.photo = undefined
+    req.product.photo = undefined // perf optimization -- return the response quickly and load image in bg
     return res.json(req.product)
 }
 
@@ -40,7 +40,7 @@ exports.createProduct = (req, res) => {
         if (err) return throwError(res, "getting problem with image. Please try again!")
 
         // destructure the fields
-        const { name, description, price, category, stock, } = fields
+        const { name, description, price, category, stock } = fields
 
         // validation
         if (!name || !description || !price || !category || !stock) {
@@ -114,14 +114,14 @@ exports.updateProduct = (req, res) => {
 exports.getAllProducts = (req, res) => {
 
     let limit = req.query.limit ? parseInt(req.query.limit) : 8
-    let sortBy = req.query.sortBy ? req.query.sortBy : _id
+    let sortBy = req.query.sortBy ? req.query.sortBy : "_id"
 
     Product
         .find()
-        .select("-photo")
-        .populate("categorỳ̀")
-        .sort([[sortBy, "asc"]])
-        .limit(limit)
+        .select("-photo") // exclude photo
+        .populate("category") 
+        .sort([[sortBy, "asc"]]) // sort data
+        .limit(limit) // restric user to some limit
         .exec((err, products) => {
             if (err) return throwError(res, "unable to find products")
 
