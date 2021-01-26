@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Base from '../core/Base'
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import { authenticate, isAuthenticated, signin } from '../auth/helper'
 
 const Signin = () => {
@@ -18,13 +18,12 @@ const Signin = () => {
     const { user } = isAuthenticated()
 
     const performRedirect = () => {
-        //TODO: come back to add redirect
         if (didRedirect) {
             if (user && user.role === 1) {
-                return <p>redirect to admin</p>
+                return <Redirect to="/admin/dashboard" />
             }
             else
-                return <p>redirect to user dashboard</p>
+                return <Redirect to="/user/dashboard" />
         }
         if (isAuthenticated())
             return <Redirect to="/" />
@@ -111,7 +110,6 @@ const Signin = () => {
             {errorMessage()}
             {signInForm()}
             {performRedirect()}
-            <p className="text-white text-center">{JSON.stringify(values)}</p>
         </Base>
     )
 }
