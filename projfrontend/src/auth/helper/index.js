@@ -1,5 +1,5 @@
 import { API } from "../../backend";
-// api means : http://localhost:8000/api/
+// api means : http://localhost:8000/api
 
 export const signup = user => {
     return fetch(`${API}/signup`, {
