@@ -14,12 +14,12 @@ exports.signout = (req, res) => {
 
 exports.signup = (req, res) => {
 
-    validation(req, res)
+    if (validation(req, res))
+        return
 
     const user = new User(req.body);
     user.save((err, user) => {
         if (err) {
-
             return res.status(400).json({
                 err: "Not able to save user in DB"
             })
@@ -37,7 +37,8 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
     const { email, password } = req.body
 
-    validation(req, res)
+    if (validation(req, res))
+        return
 
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
