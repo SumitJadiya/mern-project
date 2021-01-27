@@ -5,7 +5,7 @@ import Base from '../core/Base'
 
 const AdminDashboard = () => {
 
-    const { user: { name, email, role } } = isAuthenticated()
+    const { user: { name, email } } = isAuthenticated()
 
     const adminLeftPanel = () => {
         return (
