@@ -33,13 +33,12 @@ export const createProduct = (userID, token, product) => {
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
         body: product
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => console.log(err))
 }

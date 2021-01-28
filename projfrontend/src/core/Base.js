@@ -9,7 +9,7 @@ const Base = ({
 }) => (
     <div>
         <Menu></Menu>
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ 'min-height': '80vh' }}>
             <div className="jumbotron bg-dark text-white text-center">
                 <h2 className="display-4">{title}</h2>
                 <p className="lead">{description}</p>
@@ -25,7 +25,7 @@ const Base = ({
                 <span className="text-muted ">An amazing website using <span className="text-white">MERN</span>.</span>
             </div>
         </footer>
-    </div>
+    </div >
 )
 
 export default Base

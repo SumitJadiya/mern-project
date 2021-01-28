@@ -1,0 +1,12 @@
+import React from 'react'
+import Base from '../core/Base'
+
+const ManageProducts = () => {
+    return (
+        <Base>
+            <h1>Manage Product</h1>
+        </Base>
+    )
+}
+
+export default ManageProducts
