@@ -10,11 +10,9 @@ exports.getProductById = (req, res, next, id) => {
         .populate("category")
         .exec((err, product) => {
             if (err) return throwError(res, "Product not found!")
-
-            return res.status(200).json(product);
+            req.product = product
+            next()
         })
-    req.product = product
-    next()
 }
 
 exports.getProduct = (req, res) => {
@@ -119,7 +117,7 @@ exports.getAllProducts = (req, res) => {
     Product
         .find()
         .select("-photo") // exclude photo
-        .populate("category") 
+        .populate("category")
         .sort([[sortBy, "asc"]]) // sort data
         .limit(limit) // restric user to some limit
         .exec((err, products) => {
