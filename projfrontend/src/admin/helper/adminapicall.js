@@ -69,12 +69,11 @@ export const deleteProduct = (productId, userId, token) => {
         method: "DELETE",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         }
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => console.log(err))
 }
@@ -85,7 +84,6 @@ export const updateProduct = (productId, userId, token, product) => {
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
         body: product
