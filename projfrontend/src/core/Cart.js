@@ -3,7 +3,7 @@ import "../styles.css"
 import Base from './Base'
 import Card from './Card'
 import { loadCart } from './helper/cartHelper'
-import StripeCheckout from './StripeCheckout'
+import Stripe from './Stripe'
 
 const Cart = () => {
     const [products, setProducts] = useState([])
@@ -17,7 +17,7 @@ const Cart = () => {
         return (
             <div>
                 <h2>This section is to load products</h2>
-                {products.map((product, index) => {
+                {products?.map((product, index) => {
                     return (
                         <Card key={index} product={product} addToCart={false} removeFromCart={true} setReload={setReload} reload={reload} />
                     )
@@ -29,7 +29,7 @@ const Cart = () => {
     const loadCheckout = () => {
         return (
             <div>
-                <StripeCheckout products={products} setReload={setReload} />
+                <Stripe products={products} setReload={setReload} />
             </div>
         )
     }
